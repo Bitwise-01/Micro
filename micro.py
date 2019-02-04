@@ -42,7 +42,7 @@ class Webserver:
 
         link1 = '{}://{}{}{}{}{}'.format(
             'https' if not parse.scheme else parse.scheme, 
-            parse.netloc.lower(), parse.path, parse.params, parse.query, parse.fragment
+            parse.netloc.lower(), parse.path, parse.params, '?' + parse.query if parse.query else '', parse.fragment
         )
 
         link2 = link1.replace('https', 'http') 
