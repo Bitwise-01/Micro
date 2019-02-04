@@ -38,11 +38,11 @@ class Webserver:
         return render_template('index.html')
 
     def parser_url(self, url):
-        parse = urlparse(url.lower())
+        parse = urlparse(url)
 
         link1 = '{}://{}{}{}{}{}'.format(
             'https' if not parse.scheme else parse.scheme, 
-            parse.netloc, parse.path, parse.params, parse.query, parse.fragment
+            parse.netloc.lower(), parse.path, parse.params, parse.query, parse.fragment
         )
 
         link2 = link1.replace('https', 'http') 
@@ -76,14 +76,14 @@ class Webserver:
             return jsonify({ 'resp': self.server_url + self.database.get_link_id(link_url) })
         
         link_id = self.get_link_id(link_url)
-
         return jsonify({ 'resp': self.server_url + link_id})       
         
     def start(self):        
         self.add_paths()
         self.database.start()
-        self.app.run(debug=True)
+        self.app.run(debug=False)
 
-n = Webserver()
 
-n.start()
+if __name__ == '__main__':
+    webserver = Webserver()
+    webserver.start()

@@ -1,5 +1,11 @@
 # Python cache 
-__pycache__
+__pycache__/
 
 # Database
 *.db 
+
+# Virtual environment
+env_micro/
+
+# VS Code
+.vscode/
