@@ -63,7 +63,7 @@ class Database:
     
     def generate_link_id(self, server_url):
         while True:
-            link_id = ''.join([choice(self.printable) for _ in range(randint(4, 8))])
+            link_id = ''.join([choice(self.printable) for _ in range(randint(4, 7))])
 
             if not self.link_id_exists(link_id):
                     return link_id
